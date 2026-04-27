@@ -16,10 +16,13 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.5
-        version: 4.1.5(vite@8.0.10(esbuild@0.27.3))
+        version: 4.1.5(@types/node@24.12.2)(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))
 
   apps/app-worker:
     dependencies:
+      '@landing-estate/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       hono:
         specifier: 4.12.15
         version: 4.12.15
@@ -32,10 +35,13 @@ importers:
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: 1.33.2
-        version: 1.33.2(vite@8.0.10(esbuild@0.27.3))(workerd@1.20260424.1)(wrangler@4.85.0(@cloudflare/workers-types@4.20260426.1))
+        version: 1.33.2(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))(workerd@1.20260424.1)(wrangler@4.85.0(@cloudflare/workers-types@4.20260426.1))
       '@cloudflare/workers-types':
         specifier: 4.20260426.1
         version: 4.20260426.1
+      '@types/node':
+        specifier: 24.12.2
+        version: 24.12.2
       '@types/react':
         specifier: 19.2.0
         version: 19.2.0
@@ -47,10 +53,10 @@ importers:
         version: 6.0.3
       vite:
         specifier: 8.0.10
-        version: 8.0.10(esbuild@0.27.3)
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.3)
       vitest:
         specifier: 4.1.5
-        version: 4.1.5(vite@8.0.10(esbuild@0.27.3))
+        version: 4.1.5(@types/node@24.12.2)(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))
 
   apps/render-worker:
     dependencies:
@@ -63,19 +69,22 @@ importers:
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: 1.33.2
-        version: 1.33.2(vite@8.0.10(esbuild@0.27.3))(workerd@1.20260424.1)(wrangler@4.85.0(@cloudflare/workers-types@4.20260426.1))
+        version: 1.33.2(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))(workerd@1.20260424.1)(wrangler@4.85.0(@cloudflare/workers-types@4.20260426.1))
       '@cloudflare/workers-types':
         specifier: 4.20260426.1
         version: 4.20260426.1
+      '@types/node':
+        specifier: 24.12.2
+        version: 24.12.2
       typescript:
         specifier: 6.0.3
         version: 6.0.3
       vite:
         specifier: 8.0.10
-        version: 8.0.10(esbuild@0.27.3)
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.3)
       vitest:
         specifier: 4.1.5
-        version: 4.1.5(vite@8.0.10(esbuild@0.27.3))
+        version: 4.1.5(@types/node@24.12.2)(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))
 
   packages/auth:
     devDependencies:
@@ -114,7 +123,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.5
-        version: 4.1.5(vite@8.0.10(esbuild@0.27.3))
+        version: 4.1.5(@types/node@24.12.2)(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))
 
   packages/tracking:
     devDependencies:
@@ -127,6 +136,9 @@ importers:
       typescript:
         specifier: 6.0.3
         version: 6.0.3
+      vitest:
+        specifier: 4.1.5
+        version: 4.1.5(@types/node@24.12.2)(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))
 
 packages:
 
@@ -657,6 +669,9 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
+  '@types/node@24.12.2':
+    resolution: {integrity: sha512-A1sre26ke7HDIuY/M23nd9gfB+nrmhtYyMINbjI1zHJxYteKR6qSMX56FsmjMcDb3SMcjJg5BiRRgOCC/yBD0g==}
+
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
     peerDependencies:
@@ -947,6 +962,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@7.16.0:
+    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
   undici@7.24.8:
     resolution: {integrity: sha512-6KQ/+QxK49Z/p3HO6E5ZCZWNnCasyZLa5ExaVYyvPxUwKtbCPMKELJOqh7EqOle0t9cH/7d2TaaTRRa6Nhs4YQ==}
     engines: {node: '>=20.18.1'}
@@ -1086,12 +1104,12 @@ snapshots:
     optionalDependencies:
       workerd: 1.20260424.1
 
-  '@cloudflare/vite-plugin@1.33.2(vite@8.0.10(esbuild@0.27.3))(workerd@1.20260424.1)(wrangler@4.85.0(@cloudflare/workers-types@4.20260426.1))':
+  '@cloudflare/vite-plugin@1.33.2(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))(workerd@1.20260424.1)(wrangler@4.85.0(@cloudflare/workers-types@4.20260426.1))':
     dependencies:
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260424.1)
       miniflare: 4.20260424.0
       unenv: 2.0.0-rc.24
-      vite: 8.0.10(esbuild@0.27.3)
+      vite: 8.0.10(@types/node@24.12.2)(esbuild@0.27.3)
       wrangler: 4.85.0(@cloudflare/workers-types@4.20260426.1)
       ws: 8.18.0
     transitivePeerDependencies:
@@ -1415,6 +1433,10 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
+  '@types/node@24.12.2':
+    dependencies:
+      undici-types: 7.16.0
+
   '@types/react-dom@19.2.3(@types/react@19.2.0)':
     dependencies:
       '@types/react': 19.2.0
@@ -1432,13 +1454,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.5(vite@8.0.10(esbuild@0.27.3))':
+  '@vitest/mocker@4.1.5(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))':
     dependencies:
       '@vitest/spy': 4.1.5
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.10(esbuild@0.27.3)
+      vite: 8.0.10(@types/node@24.12.2)(esbuild@0.27.3)
 
   '@vitest/pretty-format@4.1.5':
     dependencies:
@@ -1711,13 +1733,15 @@ snapshots:
 
   typescript@6.0.3: {}
 
+  undici-types@7.16.0: {}
+
   undici@7.24.8: {}
 
   unenv@2.0.0-rc.24:
     dependencies:
       pathe: 2.0.3
 
-  vite@8.0.10(esbuild@0.27.3):
+  vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -1725,13 +1749,14 @@ snapshots:
       rolldown: 1.0.0-rc.17
       tinyglobby: 0.2.16
     optionalDependencies:
+      '@types/node': 24.12.2
       esbuild: 0.27.3
       fsevents: 2.3.3
 
-  vitest@4.1.5(vite@8.0.10(esbuild@0.27.3)):
+  vitest@4.1.5(@types/node@24.12.2)(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3)):
     dependencies:
       '@vitest/expect': 4.1.5
-      '@vitest/mocker': 4.1.5(vite@8.0.10(esbuild@0.27.3))
+      '@vitest/mocker': 4.1.5(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.3))
       '@vitest/pretty-format': 4.1.5
       '@vitest/runner': 4.1.5
       '@vitest/snapshot': 4.1.5
@@ -1748,8 +1773,10 @@ snapshots:
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
       tinyrainbow: 3.1.0
-      vite: 8.0.10(esbuild@0.27.3)
+      vite: 8.0.10(@types/node@24.12.2)(esbuild@0.27.3)
       why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 24.12.2
     transitivePeerDependencies:
       - msw
 

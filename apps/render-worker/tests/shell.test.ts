@@ -1,11 +1,9 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 import app from "../src/index.js";
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const ROOT = resolve(__dirname, "../../..");
+const ROOT = resolve(process.cwd(), "../..");
 
 describe("Render Worker Public Shell Isolation", () => {
   it("GET / returns 200", async () => {
@@ -18,6 +16,8 @@ describe("Render Worker Public Shell Isolation", () => {
     const html = await res.text();
     expect(html).toContain("<!DOCTYPE html>");
     expect(html).toContain("Render Worker");
+    expect(html).toContain("سطح العرض العام جاهز");
+    expect(html).toContain("--estate-deep");
   });
 
   it("render-worker source does not import from packages/ui", () => {

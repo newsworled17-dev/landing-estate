@@ -1,13 +1,13 @@
 # packages/ui
 
 **Owner**: App Worker – authenticated dashboard and builder UI  
-**Status**: Reserved placeholder. No implementation in Phase 1.
+**Status**: Phase 1.1 design token foundation.
 
 ## Responsibility
 
-This package will own shared React UI components, design tokens, Tailwind CSS
-utilities, and RTL-aware layout primitives for the authenticated dashboard
-and builder interfaces.
+This package owns app-worker-only design tokens, CSS variables, focus styles,
+and RTL-aware layout utilities for the authenticated dashboard and builder
+interfaces. React UI components can be added in later feature-scoped phases.
 
 ## Boundaries
 
@@ -15,6 +15,8 @@ and builder interfaces.
 - Must NEVER be imported by `apps/render-worker` or public-safe packages.
 - Import-boundary validation in Phase 1 enforces this rule via `scripts/check-boundaries.mjs`.
 
-## Phase 1 Note
+## Phase 1.1 Note
 
-Only the package skeleton exists. No UI components are implemented.
+The Premium Calm token layer is implemented. No authentication flows, product
+workflows, builder components, database access, publishing, tracking, or leads
+are implemented.

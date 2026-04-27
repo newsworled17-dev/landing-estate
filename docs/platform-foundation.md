@@ -32,7 +32,9 @@ docs/
 | Route | Response |
 |-------|----------|
 | `GET /` | Arabic RTL dashboard shell HTML |
+| `GET /assets/app-shell.css` | Premium Calm RTL shell stylesheet |
 | `GET /api/health` | `{ runtime, status, scope }` JSON |
+| `GET /api/*` | JSON 404 for unknown API routes |
 
 ### `apps/render-worker`
 
@@ -47,6 +49,20 @@ docs/
 - `apps/render-worker` MUST NOT import from `packages/ui`
 - `packages/shared` MAY be imported by both workers
 - Enforced by: `scripts/check-boundaries.mjs`
+
+## Phase 1.1 Design System Stabilization
+
+The pre-Phase 2 stabilization pass introduces the Premium Calm visual
+foundation for authenticated app surfaces:
+
+- `packages/ui` owns app-worker-only design tokens, CSS variables, RTL
+  utilities, focus styles, and radius policy.
+- `apps/app-worker` may import `packages/ui` to render dashboard shell styling.
+- `apps/render-worker` keeps a visually compatible but isolated public health
+  page and must not import app UI tokens or components.
+- Browser checks verify that the desktop sidebar is physically on the right,
+  mobile tap targets remain stable, and the shell can be captured in a
+  screenshot without layout breakage.
 
 ## Excluded Product Workflows (Phase 1)
 

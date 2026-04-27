@@ -2,11 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
-    "types": ["@cloudflare/workers-types"],
+    "types": ["@cloudflare/workers-types", "node"],
     "jsx": "react-jsx",
-    "outDir": "dist",
-    "rootDir": "src",
-    "baseUrl": "."
+    "outDir": "dist"
   },
   "include": ["src/**/*", "tests/**/*"]
 }

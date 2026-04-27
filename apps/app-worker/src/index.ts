@@ -6,6 +6,7 @@
  */
 import { Hono } from "hono";
 import { shellHtml } from "./shell.js";
+import { appShellCss } from "./styles.js";
 
 type Env = {
   ASSETS: Fetcher;
@@ -21,7 +22,24 @@ app.get("/api/health", (c) => {
   });
 });
 
+app.get("/assets/app-shell.css", (c) => {
+  return c.text(appShellCss, 200, {
+    "Content-Type": "text/css; charset=utf-8",
+  });
+});
+
 app.get("/*", (c) => {
+  if (c.req.path.startsWith("/api/")) {
+    return c.json(
+      {
+        error: "not_found",
+        runtime: "app-worker",
+        scope: "foundation",
+      },
+      404
+    );
+  }
+
   return c.html(shellHtml);
 });
 

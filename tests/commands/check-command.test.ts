@@ -15,6 +15,7 @@ describe("Aggregate Check Script Smoke Test", () => {
     expect(checkScript).toBeDefined();
     expect(checkScript).toContain("typecheck");
     expect(checkScript).toContain("lint");
+    expect(checkScript).toContain("check:boundaries");
     expect(checkScript).toContain("test");
     expect(checkScript).toContain("build");
   });

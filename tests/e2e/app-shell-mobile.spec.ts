@@ -1,8 +1,12 @@
-import { test, expect, devices } from "@playwright/test";
+import { test, expect } from "@playwright/test";
+
+test.use({
+  hasTouch: true,
+  isMobile: true,
+  viewport: { width: 390, height: 844 },
+});
 
 test.describe("App Shell — Arabic RTL Mobile Layout", () => {
-  test.use({ ...devices["iPhone 12"] });
-
   test("page has dir=rtl on mobile", async ({ page }) => {
     await page.goto("/");
     const html = page.locator("html");
@@ -25,6 +29,17 @@ test.describe("App Shell — Arabic RTL Mobile Layout", () => {
     await page.goto("/");
     const main = page.locator("main");
     await expect(main).toBeVisible();
+  });
+
+  test("mobile header keeps RTL order and stable tap target size", async ({ page }) => {
+    await page.goto("/");
+    const headerBox = await page.locator(".mobile-header").boundingBox();
+    const actionBox = await page.locator(".mobile-action").boundingBox();
+    expect(headerBox).not.toBeNull();
+    expect(actionBox).not.toBeNull();
+    expect(headerBox!.height).toBeGreaterThanOrEqual(56);
+    expect(actionBox!.height).toBeGreaterThanOrEqual(44);
+    expect(actionBox!.width).toBeGreaterThanOrEqual(44);
   });
 
   test("page does not overflow horizontally on mobile", async ({ page }) => {

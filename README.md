@@ -28,6 +28,15 @@ pnpm dev:app
 pnpm dev:render
 ```
 
+## Phase 1.1 Design System
+
+The app shell now uses the Premium Calm RTL foundation:
+
+- `packages/ui` exports app-worker-only design tokens and RTL utilities.
+- `apps/app-worker` serves shell CSS from `/assets/app-shell.css`.
+- `apps/render-worker` keeps an isolated public health page and does not
+  import `packages/ui`.
+
 ## Project Health Commands
 
 | Command | Description |

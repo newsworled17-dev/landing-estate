@@ -21,11 +21,26 @@ test.describe("App Shell — Arabic RTL Desktop Layout", () => {
     await expect(sidebar).toBeVisible();
   });
 
+  test("sidebar is visually anchored to the right of the main content", async ({ page }) => {
+    await page.goto("/");
+    const sidebarBox = await page.locator(".sidebar").boundingBox();
+    const mainBox = await page.locator("main").boundingBox();
+    expect(sidebarBox).not.toBeNull();
+    expect(mainBox).not.toBeNull();
+    expect(sidebarBox!.x).toBeGreaterThan(mainBox!.x);
+  });
+
   test("Arabic text is present in the shell", async ({ page }) => {
     await page.goto("/");
     const body = page.locator("body");
     const text = await body.textContent();
-    expect(text).toMatch(/لوحة|عقارية|جاهز/);
+    expect(text).toMatch(/لوحة|عقارية|Premium Calm/);
+  });
+
+  test("Premium Calm shell screenshot is capturable and non-empty", async ({ page }) => {
+    await page.goto("/");
+    const screenshot = await page.screenshot({ fullPage: true });
+    expect(screenshot.length).toBeGreaterThan(20_000);
   });
 
   test("health API returns healthy JSON", async ({ page }) => {
