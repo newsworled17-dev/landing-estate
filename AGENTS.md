@@ -2,6 +2,6 @@
 For product and platform context, read `docs/blueprint.md` and
 `.specify/memory/constitution.md`.
 
-When a feature plan exists under `specs/*/plan.md`, read that current plan
-before editing implementation code.
+Current feature plan: `specs/001-platform-foundation/plan.md`.
+Read that plan before editing implementation code for Phase 1.
 <!-- SPECKIT END -->

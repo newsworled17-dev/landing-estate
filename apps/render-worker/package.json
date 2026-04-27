@@ -1,0 +1,24 @@
+{
+  "name": "@landing-estate/render-worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --port 5174",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "vitest run --config vitest.config.ts"
+  },
+  "dependencies": {
+    "hono": "4.12.15",
+    "@landing-estate/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.33.2",
+    "@cloudflare/workers-types": "4.20260426.1",
+    "vite": "8.0.10",
+    "vitest": "4.1.5",
+    "typescript": "6.0.3"
+  }
+}
