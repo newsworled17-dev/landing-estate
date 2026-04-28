@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("App Shell — Arabic RTL Desktop Layout", () => {
+test.describe("App Shell - Arabic RTL Estate Studio Desktop Layout", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
   test("page has dir=rtl and lang=ar", async ({ page }) => {
@@ -10,34 +10,52 @@ test.describe("App Shell — Arabic RTL Desktop Layout", () => {
     await expect(html).toHaveAttribute("lang", "ar");
   });
 
-  test("page title contains Landing EState", async ({ page }) => {
+  test("page title contains Landing EState and Estate Studio", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/Landing EState/);
+    await expect(page).toHaveTitle(/Estate Studio/);
   });
 
-  test("sidebar navigation is visible on desktop", async ({ page }) => {
+  test("studio rail, smart section library, canvas, and inspector are visible on desktop", async ({ page }) => {
     await page.goto("/");
-    const sidebar = page.locator(".sidebar");
-    await expect(sidebar).toBeVisible();
+    await expect(page.locator(".studio-rail")).toBeVisible();
+    await expect(page.locator(".section-library")).toBeVisible();
+    await expect(page.locator(".canvas-workspace")).toBeVisible();
+    await expect(page.locator(".inspector-panel")).toBeVisible();
   });
 
-  test("sidebar is visually anchored to the right of the main content", async ({ page }) => {
+  test("RTL studio layout anchors rail and section library to the right while inspector stays left", async ({ page }) => {
     await page.goto("/");
-    const sidebarBox = await page.locator(".sidebar").boundingBox();
-    const mainBox = await page.locator("main").boundingBox();
-    expect(sidebarBox).not.toBeNull();
-    expect(mainBox).not.toBeNull();
-    expect(sidebarBox!.x).toBeGreaterThan(mainBox!.x);
+    const railBox = await page.locator(".studio-rail").boundingBox();
+    const libraryBox = await page.locator(".section-library").boundingBox();
+    const canvasBox = await page.locator(".canvas-workspace").boundingBox();
+    const inspectorBox = await page.locator(".inspector-panel").boundingBox();
+
+    expect(railBox).not.toBeNull();
+    expect(libraryBox).not.toBeNull();
+    expect(canvasBox).not.toBeNull();
+    expect(inspectorBox).not.toBeNull();
+    expect(railBox!.x).toBeGreaterThan(libraryBox!.x);
+    expect(libraryBox!.x).toBeGreaterThan(canvasBox!.x);
+    expect(inspectorBox!.x).toBeLessThan(canvasBox!.x);
   });
 
-  test("Arabic text is present in the shell", async ({ page }) => {
+  test("selected smart section outline is visible inside the preview", async ({ page }) => {
+    await page.goto("/");
+    const selectedSection = page.locator(".selected-section");
+    await expect(selectedSection).toBeVisible();
+    const boxShadow = await selectedSection.evaluate((node) => getComputedStyle(node).boxShadow);
+    expect(boxShadow).toContain("22, 131, 248");
+  });
+
+  test("Arabic Estate Studio text is present in the shell", async ({ page }) => {
     await page.goto("/");
     const body = page.locator("body");
     const text = await body.textContent();
-    expect(text).toMatch(/لوحة|عقارية|Premium Calm/);
+    expect(text).toMatch(/استوديو|أقسام ذكية|صفحة عقارية|الشعار الرئيسي/);
   });
 
-  test("Premium Calm shell screenshot is capturable and non-empty", async ({ page }) => {
+  test("Estate Studio shell screenshot is capturable and non-empty", async ({ page }) => {
     await page.goto("/");
     const screenshot = await page.screenshot({ fullPage: true });
     expect(screenshot.length).toBeGreaterThan(20_000);

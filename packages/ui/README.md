@@ -17,6 +17,8 @@ interfaces. React UI components can be added in later feature-scoped phases.
 
 ## Phase 1.1 Note
 
-The Premium Calm token layer is implemented. No authentication flows, product
-workflows, builder components, database access, publishing, tracking, or leads
-are implemented.
+The Estate Studio Light token layer is implemented. It is inspired by modern
+builder/editor products: white panels, a precise canvas grid, blue selection
+states, restrained shadows, and RTL-first spacing. No authentication flows,
+product workflows, builder components, database access, publishing, tracking,
+or leads are implemented.

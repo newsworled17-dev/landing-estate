@@ -14,10 +14,10 @@ describe("App Worker Shell Contract", () => {
     expect(html).toContain('lang="ar"');
   });
 
-  it("GET / contains Arabic placeholder content", async () => {
+  it("GET / contains Estate Studio Light placeholder content", async () => {
     const res = await app.request("/");
     const html = await res.text();
-    expect(html).toMatch(/Landing EState|لوحة|عقارية|Premium Calm/);
+    expect(html).toMatch(/Landing EState|Estate Studio|استوديو|أقسام ذكية|صفحة عقارية/);
   });
 
   it("GET / does not contain authentication forms", async () => {
@@ -33,12 +33,14 @@ describe("App Worker Shell Contract", () => {
     expect(html).not.toContain("<style>");
   });
 
-  it("GET /assets/app-shell.css returns Premium Calm CSS variables", async () => {
+  it("GET /assets/app-shell.css returns Estate Studio Light CSS variables", async () => {
     const res = await app.request("/assets/app-shell.css");
     expect(res.status).toBe(200);
     expect(res.headers.get("content-type")).toContain("text/css");
     const css = await res.text();
-    expect(css).toContain("--le-color-estate");
-    expect(css).toContain("grid-template-areas: \"main sidebar\"");
+    expect(css).toContain("--le-color-selection");
+    expect(css).toContain("--le-grid-size");
+    expect(css).toContain('grid-template-areas:');
+    expect(css).toContain(".selected-section");
   });
 });

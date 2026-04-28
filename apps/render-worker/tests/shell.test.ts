@@ -11,13 +11,14 @@ describe("Render Worker Public Shell Isolation", () => {
     expect(res.status).toBe(200);
   });
 
-  it("GET / returns HTML content", async () => {
+  it("GET / returns Estate Studio Light compatible HTML content", async () => {
     const res = await app.request("/");
     const html = await res.text();
     expect(html).toContain("<!DOCTYPE html>");
     expect(html).toContain("Render Worker");
     expect(html).toContain("سطح العرض العام جاهز");
-    expect(html).toContain("--estate-deep");
+    expect(html).toContain("Estate Studio Light");
+    expect(html).toContain("--blue");
   });
 
   it("render-worker source does not import from packages/ui", () => {

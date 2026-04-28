@@ -32,7 +32,7 @@ docs/
 | Route | Response |
 |-------|----------|
 | `GET /` | Arabic RTL dashboard shell HTML |
-| `GET /assets/app-shell.css` | Premium Calm RTL shell stylesheet |
+| `GET /assets/app-shell.css` | Estate Studio Light RTL shell stylesheet |
 | `GET /api/health` | `{ runtime, status, scope }` JSON |
 | `GET /api/*` | JSON 404 for unknown API routes |
 
@@ -52,17 +52,19 @@ docs/
 
 ## Phase 1.1 Design System Stabilization
 
-The pre-Phase 2 stabilization pass introduces the Premium Calm visual
+The pre-Phase 2 stabilization pass introduces the Estate Studio Light visual
 foundation for authenticated app surfaces:
 
 - `packages/ui` owns app-worker-only design tokens, CSS variables, RTL
   utilities, focus styles, and radius policy.
-- `apps/app-worker` may import `packages/ui` to render dashboard shell styling.
+- `apps/app-worker` may import `packages/ui` to render the static builder
+  studio shell styling.
 - `apps/render-worker` keeps a visually compatible but isolated public health
   page and must not import app UI tokens or components.
-- Browser checks verify that the desktop sidebar is physically on the right,
-  mobile tap targets remain stable, and the shell can be captured in a
-  screenshot without layout breakage.
+- Browser checks verify that the desktop rail and smart-section library are
+  physically on the right, the inspector is on the left, mobile tap targets
+  remain stable, and the shell can be captured in a screenshot without layout
+  breakage.
 
 ## Excluded Product Workflows (Phase 1)
 

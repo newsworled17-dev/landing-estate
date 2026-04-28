@@ -21,7 +21,7 @@ pnpm install
 ## Development
 
 ```powershell
-# Start app-worker shell (Arabic RTL dashboard)
+# Start app-worker shell (Arabic RTL Estate Studio)
 pnpm dev:app
 
 # Start render-worker shell (public rendering health)
@@ -30,7 +30,7 @@ pnpm dev:render
 
 ## Phase 1.1 Design System
 
-The app shell now uses the Premium Calm RTL foundation:
+The app shell now uses the Estate Studio Light RTL foundation:
 
 - `packages/ui` exports app-worker-only design tokens and RTL utilities.
 - `apps/app-worker` serves shell CSS from `/assets/app-shell.css`.
